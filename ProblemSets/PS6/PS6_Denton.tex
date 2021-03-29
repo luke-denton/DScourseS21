@@ -1,0 +1,45 @@
+\documentclass{homework}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\title{PS6}
+\author{Luke Denton}
+
+\begin{document}
+
+
+\maketitle
+
+\exercise
+For my data, I browsed all of the available data sets in my Rstudio by typing "data()". From there, I browsed until I found the data set "midwest," which provides general demographic information about counties in the Midwest. I found it interesting and wanted to see if I could find any meaningful conclusions from the data.
+
+When I started doing visualizations with the data, I decided to separate metro and non metro counties. I did this by using the facet wrap function at the end of each visualization I coded. I also recoded the "inmetro" variable to a factor variable for readability using the mutate function. I then realized that there were some enormous outliers in the metro counties that were affecting my visualizations, so I removed them from the data to ease the comparison between metro and non metro counties.
+
+\subsection{See the next pages for visualizations and explanations.}
+
+\newpage
+\exercise
+My first visualization focuses on racial demographics among metro and non-metro counties in the Midwest. I used the "percwhite" column of the data set, so in this visualization there are no specified races or ethnicities other than white and non-white.
+
+\begin{figure}[h]
+\includegraphics[width=1\textwidth]{percwhite.png}
+\end{figure}
+Across both metro and non-metro counties, the Midwest is predominantly white. There is a noticeable cluster of smaller population, non-metro counties that are at or above 95 percent white in their population. There is a similar cluster with metro counties, indicating that there may not be a large racial difference between rural and metro counties, excluding outliers. This is definitely an interesting trend in counties with population <120k.
+
+\newpage
+\exercise*
+My next visualization I have included helps to identify trends in education levels in metro and non-metro counties in the Midwest. This helps us to understand an important indicator for many other demographics about a population, which can include income, poverty, crime, and more.
+\begin{figure}[h]
+\includegraphics[width=1\textwidth]{percollege_updated.png}
+\end{figure}
+
+\newpage
+\exercise
+My last visualization examines percent of total population living below the poverty line across non-metro and metro counties.
+\begin{figure}[h]
+    \includegraphics[width = 1\textwidth]{percbelowpoverty.png}
+\end{figure}
+
+This visualization helps to understand the distribution and level of poverty in different areas. The percentage of people living below the poverty line is dramatically higher in non-metro counties than metro ones. Understanding where poverty lies and other demographics about the area can help research and policy efforts for reducing poverty and improving the lives of people in the region!
+
+\end{document}
