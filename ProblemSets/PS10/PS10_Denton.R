@@ -341,5 +341,9 @@ svm_ans %<>% left_join(svm_test %>% slice(1),by=c(".metric",".estimator")) %>%
 # combine answers
 #####################
 all_ans <- bind_rows(logit_ans,tree_ans,nnet_ans,knn_ans,svm_ans)
+<<<<<<< HEAD
 datasummary_df(all_ans %>% select(-.metric,-.estimator,-mean,-n,-std_err),output="markdown") %>% print
 datasummary_df(all_ans %>% select(-.metric,-.estimator,-mean,-n,-std_err),output="latex")
+=======
+datasummary_df(all_ans %>% select(-.metric,-.estimator,-mean,-n,-std_err),output="markdown") %>% print
+>>>>>>> 0f4f57ad1ca6a1fe71b29b54c9fb66025e1112fa
