@@ -1,0 +1,31 @@
+\documentclass{homework}
+\usepackage{graphicx}
+
+\title{PS10}
+\author{Luke Denton}
+
+\begin{document}
+
+\maketitle
+
+\section{Data Summary Table}
+\begin{table}[h]
+\centering
+\hspace*{-1.65cm}
+\resizebox{1.2 \textwidth}{!}{
+\begin{tabular}[t]{llllllllll}
+\toprule
+penalty & .estimate & algorithm & cost\_complexity & tree\_depth & min\_n & hidden\_units & neighbors & cost & rbf\_sigma\\
+\midrule
+0.00 & 0.84 & logit &  &  &  &  &  &  & \\
+ & 0.86 & tree & 0.00 & 15.00 & 40.00 &  &  &  & \\
+0.00 & 0.83 & nnet &  &  &  & 9.00 &  &  & \\
+ & 0.84 & knn &  &  &  &  & 30.00 &  & \\
+ & 0.85 & svm &  &  &  &  &  & 2.00 & 0.25\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+All of the algorithms arrived at a similar estimate. The estimates only differ by 0.03 at the most. The last two algorithms took much longer to compute, so that should be a point of consideration when deciding an algorithm to use.
+
+\end{document}
