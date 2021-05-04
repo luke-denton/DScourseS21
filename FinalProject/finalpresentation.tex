@@ -1,0 +1,220 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{longtable}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Final Presentation},
+  pdfauthor={Luke Denton},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{An Examination of Secondary School Success Indicators}
+\author{Luke Denton}
+\date{5/4/2021}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Introduction}
+\protect\hypertarget{introduction}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Public education is heralded as an opportunity to overcome
+  generational poverty
+\item
+  Difficult to quantify causes of student success
+\item
+  Insufficient resources
+\item
+  Best method for student success is unclear
+\item
+  Inferior educational outcomes for students
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Data}
+\protect\hypertarget{data}{}
+
+UCI Machine Learning - Student Performance Database
+
+\begin{itemize}
+\tightlist
+\item
+  649 observations, students ages 15-22
+\item
+  1,2,3 period grades in math \& portuguese
+\item
+  student demographics \& school activities
+\item
+  parent education, family size, \# failed classes, \# absences, urban
+  or rural housing, study time, extracurricular activities, internet
+  access, romantic relationships, pursuing higher ed, alcohol
+  consumption
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Data}
+    \includegraphics[width = \linewidth]{Rplot02.png}
+\end{frame}
+
+\begin{frame}{Methods}
+\protect\hypertarget{methods}{}
+
+Multiple Linear Regression to explain causality, in progress using ML to
+predict outcomes
+
+\ final = \beta_0 + \beta_1G1 + \beta_2G2 + u \
+
+\ final = \beta_0 + \beta_1G1 + \beta_2G2 +\beta_3Medu + \beta_4Fedu + \beta_5studytime + u \
+
+\ final = \beta_0 + \beta_1G1 + \beta_2G2 + \beta_3Medu + \beta_4Fedu + \beta_5studytime +
+        \beta_6address + \beta_7famsize + \beta_8Pstatus + \beta_9activities + u \
+
+\end{frame}
+
+\begin{frame}{Findings}
+   \begin{table}
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & Model 1\\
+\midrule
+(Intercept) & -1.830\\
+ & (0.335)\\
+G1 & 0.153\\
+ & (0.056)\\
+G2 & 0.987\\
+ & (0.050)\\
+\midrule
+Num.Obs. & 395\\
+R2 & 0.822\\
+R2 Adj. & 0.821\\
+AIC & 1648.2\\
+BIC & 1664.1\\
+Log.Lik. & -820.115\\
+F & 906.134\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{Findings}
+\protect\hypertarget{findings}{}
+
+\begin{itemize}
+\tightlist
+\item
+  1st and 2nd period grades have a significant causal effect on final
+  grades (Rsq = 0.822)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    2nd period grade had a much stronger effect (beta = 0.987)
+  \end{itemize}
+\item
+  No other variables in other models were statistically significant
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+\protect\hypertarget{conclusion}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Many of the factors attributed to student success did not have a causal effect in this model
+\item
+  ML model would prove useful for prediction, since statistically significant causality is difficult to establish
+\item
+  Continued study: using US Dept of Ed database on student performance
+\end{itemize}
+
+\end{frame}
+
+\end{document}
