@@ -1,0 +1,100 @@
+\documentclass{homework}
+
+\title{PS12}
+\author{Luke Denton}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 6}
+
+\begin{table}[h]
+\centering
+\begin{tabular}[t]{lrrrrrrr}
+\toprule
+  & Unique (\#) & Missing (\%) & Mean & SD & Min & Median & Max\\
+\midrule
+logwage & 1546 & 31 & 1.7 & 0.7 & -1.0 & 1.7 & 4.2\\
+hgc & 14 & 0 & 12.5 & 2.4 & 5 & 12.0 & 18\\
+exper & 1932 & 0 & 6.4 & 4.9 & 0.0 & 6.0 & 25.0\\
+kids & 2 & 0 & 0.4 & 0.5 & 0 & 0.0 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}
+These results mostly make sense, however it does seem interesting that the mean of children is 0.4; I figured it would be higher.
+
+logwage is missing at a 31 percent rate. I would say that the data is likely MAR; I think some people may be uncomfortable reporting their wage.
+
+\pagebreak
+
+\section{Question 7}
+I think I may have an error somewhere in my heckit model, because it is very far off. The beta1 doing listwise deletion was actually more accurate than the mean imputation, which reaffirms that mean imputation sucks. 
+\begin{table}[h]
+\centering
+\begin{tabular}[t]{lccc}
+\toprule
+  & est.mcar & est.mimp & selection\\
+\midrule
+(Intercept) & 0.891 & 1.202 & 20.553\\
+ & (0.112) & (0.076) & (0.624)\\
+hgc & 0.058 & 0.035 & -1.104\\
+ & (0.009) & (0.006) & (0.080)\\
+union1 & 0.068 & 0.021 & -1.113\\
+ & (0.073) & (0.045) & (0.174)\\
+college1 & -0.079 & -0.124 & -0.565\\
+ & (0.106) & (0.048) & (0.098)\\
+exper & 0.016 & 0.003 & -0.506\\
+ & (0.006) & (0.004) & (0.044)\\
+exper^2 & -0.004 & -0.001\\
+ & (0.001) & (0.000) & \\
+\midrule
+Num.Obs. & 1545 & 2229 & 1545\\
+R2 & 0.032 & 0.016 & 0.032\\
+R2 Adj. & 0.029 & 0.014 & 0.029\\
+AIC & 3190.2 & 3815.6 & 3190.2\\
+BIC & 3222.3 & 3849.9 & 3222.3\\
+Log.Lik. & -1589.113 & -1901.820 & -1589.113\\
+F & 12.600 & 9.162 & 12.600\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+\section{Question 8}
+
+Here is my probit model, sorry for all of the page breaks.
+
+\begin{table}[h]
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & Model 1\\
+\midrule
+(Intercept) & -5.954\\
+ & (3.589)\\
+hgc & -0.895\\
+ & (0.085)\\
+college1 & 0.532\\
+ & (0.435)\\
+exper & 1.733\\
+ & (0.778)\\
+I(exper\textasciicircum{}2) & -0.003\\
+ & (0.039)\\
+married, kids & 0.000\\
+ & ()\\
+\midrule
+Num.Obs. & 2229\\
+AIC & 263.6\\
+BIC & 292.2\\
+Log.Lik. & -126.824\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{Question 9}
+I got the same value for every mean predicted probability before and after the coefficient transformation. I think that this is not realistic, because if wives and moms can't work union jobs, the choice is essentially off the table and the probabilities should be different.
+
+\end{document}
